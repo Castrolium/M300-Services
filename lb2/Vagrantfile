@@ -1,49 +1,40 @@
-# encoding: utf-8
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# Box / OS
-VAGRANT_BOX = 'ubuntu/trusty64'
-# Memorable name for your
-VM_NAME = 'new-vm'
-# VM User — 'vagrant' by default
-VM_USER = 'vagrant'
-# Username on your Mac
-MAC_USER = 'John'
-# Host folder to sync
-HOST_PATH = '/Users/' + MAC_USER + '/' + VM_NAME
-# Where to sync to on Guest — 'vagrant' is the default user name
-GUEST_PATH = '/home/' + VM_USER + '/' + VM_NAME
-# # VM Port — uncomment this to use NAT instead of DHCP
-# VM_PORT = 8080
-Vagrant.configure(2) do |config|
-  # Vagrant box from Hashicorp
-  config.vm.box = VAGRANT_BOX
-  
-  # Actual machine name
-  config.vm.hostname = VM_NAME
-  # Set VM name in Virtualbox
-  config.vm.provider "virtualbox" do |v|
-    v.name = VM_NAME
-    v.memory = 2048
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.define "backend" do |db|
+    db.vm.box = "ubuntu/xenial64"
+    db.vm.hostname = "sidv01"
+    db.vm.network "private_network", ip: "192.168.55.100"
+    # MySQL Port nur im Private Network sichtbar
+	  # db.vm.network "forwarded_port", guest:3306, host:3306, auto_correct: false
+	db.vm.provider "virtualbox" do |vb|
+	  vb.memory = "512"  
+	end
+	db.vm.provision "shell", inline: <<-SHELL
+		sudo apt-get update
+SHELL
   end
-  #DHCP — comment this out if planning on using NAT instead
-  config.vm.network "private_network", type: "dhcp"
-  # # Port forwarding — uncomment this to use NAT instead of DHCP
-  # config.vm.network "forwarded_port", guest: 80, host: VM_PORT
-  # Sync folder
-  config.vm.synced_folder HOST_PATH, GUEST_PATH
-  # Disable default Vagrant folder, use a unique path per project
-  config.vm.synced_folder '.', '/home/'+VM_USER+'', disabled: true
-  # Install Git, Node.js 6.x.x, Latest npm
-  config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y git
-    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-    apt-get install -y nodejs
-    apt-get install -y build-essential
-    npm install -g npm
-    apt-get update
-    apt-get upgrade -y
-    apt-get autoremove -y
-  SHELL
-end
+  
+  config.vm.define "web" do |web|
+    web.vm.box = "ubuntu/xenial64"
+    web.vm.hostname = "sidv02"
+    web.vm.network "private_network", ip:"192.168.55.101" 
+	web.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+	web.vm.provider "virtualbox" do |vb|
+	  vb.memory = "512"  
+	end       
+	web.vm.provision "shell", inline: <<-SHELL
+		sudo apt-get update
+		sudo apt-get -y install apache2
+SHELL
+	end  
+ end
