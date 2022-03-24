@@ -22,19 +22,22 @@ Die Installation mit Vagrant wurde erfolgreich durchgeführt wenn sie foldendes 
 `http://127.0.0.1:8080/`
 
 ## [Grafische Übersicht des Service](#grafische-übersicht-des-service)
- ![Diagramm.png](Markdown-Files/Diagramm.png)
+ ![Diagramm.png](Markdown-Files/diagramm.png)
 
 ## [Projekt](#projekt)
 
 ### [MySQL installation](#mysql-installation)
-`test`
+MySQL lässt sich mit mit einem Skript installieren, dass wir im Internet gefunden haben: <br />
+https://gist.github.com/sheikhwaqas/9088872#file-setup-mysql-sh-L9
 
 ### [Samba installation](#samba-installation)
 Mit folgendem Befehl kann man Samba einfach auf Ubuntu vollständig automatisch installieren: <br />
 `sudo apt-get -y install samba` <br />
 
+Mithilfe von Vagrant Commands kann man dann das Template unter dem Folder Tempaltes auf den Client und den Server anwenden.
+
 ### [Apache installation](#apache-installation)
-Mit foldenem Befehl kann man auch Apache einfach und voll automatisch installieren: <br />
+Mit folgendem Befehl kann man auch Apache einfach und voll automatisch installieren: <br />
 `sudo apt-get -y install apache2` <br />
 <br />
 Danach befindet sich die Website unter: `/var/www/html` und kann dort ersetzt werden bei Bedarf.
@@ -60,4 +63,4 @@ Mit dieser Konfiguration kann man sich vor Hacking attacken schützten. Da die D
 |Thema|Quellen|
 |--------|--------|
 |    Markdown    |    1. https://www.ionos.de/digitalguide/websites/web-entwicklung/markdown/#:~:text=Mit%20Pipes%20(%7C)%20lassen%20sich,die%20entsprechenden%20Zellen%20mit%20Bindestrichen.&text=Es%20ist%20prinzipiell%20nicht%20wichtig%2C%20dass%20die%20Pipes%20untereinander%20sind. <br /> 2. https://programmerwiki.com/article/23911842833/ <br /> 3. https://www.markdownguide.org/getting-started/ <br /> 4. https://www.markdownguide.org/basic-syntax/#images-1    |
-|    Mysql    |    https://www.liquidweb.com/kb/create-a-mysql-database-on-linux-via-command-line/    |
+|    Mysql    |   1. https://www.liquidweb.com/kb/create-a-mysql-database-on-linux-via-command-line/  <br /> 2. https://gist.github.com/sheikhwaqas/9088872#file-setup-mysql-sh-L9 |
