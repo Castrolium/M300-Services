@@ -54,11 +54,11 @@ Mit dieser Konfiguration kann man sich vor Hacking attacken schützten. Da die D
 
 |Bedingung|erfüllt|nicht erfüllt|Begründung|
 |--------|--------|--------|--------|
-|MySQL Webgui ist erreichbar.||||
-|Datenbanken können bearbeitet werden.||||
-|Samba Share kommuniziert Ordnungsgemäss.||||
-|Beide VMs installiert.||||
-|Apache Website funktioniert.||||
+|MySQL Webgui ist erreichbar.||X|Zu wenig Zeit zu viele Leute krank.|
+|Datenbanken können bearbeitet werden.|X|||
+|Samba Share kommuniziert Ordnungsgemäss.|X|||
+|Beide VMs installiert.|X|||
+|Apache Website funktioniert.|X|||
 
 ## [Quellenverzeichniss](#quellenverzeichniss)
 
