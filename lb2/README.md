@@ -19,7 +19,9 @@ Vagrant ist eine freie Ruby-Anwendung zum Erstellen und Verwalten virtueller Mas
 Wir werden in diesem Projekt Vagrant benutzten um eine Mysql Datenbank zu installieren und diese dann mithilfe von Samba auf einem anderen Client über Apache auf das GUI zugreifen kann.
 
 Die Installation mit Vagrant wurde erfolgreich durchgeführt wenn sie foldendes in ihren Browser eingeben und dann zur PhPmyadminn gelangen: <br />
-`http://127.0.0.1:8080/`
+`http://127.0.0.1:8080/` <br />
+
+Passwort für root ist root
 
 ## [Grafische Übersicht des Service](#grafische-übersicht-des-service)
  ![Diagramm.png](Markdown-Files/diagramm.png)
