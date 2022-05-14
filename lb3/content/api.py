@@ -16,7 +16,7 @@ api = Api(app)
 class Product(Resource):
 
     def get(self):
-        return {'products': [
+        return {'products': [   # returns JSON
             'MP3-Player',
             'Powerbank',
             'Beamer',
@@ -37,3 +37,5 @@ api.add_resource(Product, '/')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+
+# A real API would output much more information and details but for an example this will do.
