@@ -21,7 +21,7 @@ class Product(Resource):
             'Powerbank',
             'Beamer',
             'Gaming-PC',
-            'H\xc3\xb6henverstellbarer Schreibtisch',
+            'Hoehenverstellbarer Schreibtisch',
             'Multifunktionsdrucker',
             'Blu-ray-Player',
             'PC-Maus',
