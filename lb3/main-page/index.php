@@ -21,4 +21,3 @@ foreach ($products as $product)
         </ul>
     </body>
 </html>
-
